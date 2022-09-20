@@ -1,44 +1,45 @@
-# High Side Switch
+# High side switch
 
 Circuit for high side switch 60V up to 3 kW
 
-# Anforderung
+# Requirements
 
-Die Stromversorgung eines Motor-Controllers soll an der High Side (Vss) geschaltet werden. Als Schaltsignal wird die Betriebsspannung (Vss) mit einem geringen Strom im Bereich von maximal einiger Milliampere verwendet. Im Gegensatz zu anderen, sogennanten Anti-Spark-Switches, ist der High Side Switch bei offenem Eingang ausgeschaltet. Daher wird nur ein einziger Schließer benötigt. Die Schaltleitung kann auch an abhängige Signalgeber angeschlossen werden.
+The power supply of a motor controller should be switched on the high side (Vss). The operating voltage (Vss) with a low current in the maximum range of a few milliamps is used as the switching signal. In contrast to other so-called anti-spark switches, the high-side switch is switched off when the input is open. Therefore, only a single closer is required. The switching line can also be connected to dependent signaling devices.
 
-# Wieso High Side?
+# Why High Side?
 
-Wird Low Side geschaltet, hängt die Elektronik weiterhin an der Betriebsspannung. Durch mit Masse verbundenen Bauteilen fließt weiter Strom. Dies führt zu unangenehmen Nebeneffekten, permanenten Stromverbrauch etc.
+If the low side is switched, the electronics are still dependent on the operating voltage. Current continues to flow through components connected to ground. This leads to unpleasant side effects, permanent power consumption, etc.
 
-# Hinweise zum Schaltplan
+# Notes on the Circuit Diagram
 
-In LTSpice hatte ich nicht exakt die verwendeten Bauteile, derher habe ich ähnliche Beuteile verwendet.
+In LTSpice I didn't have the exact components used, so I used similar components.
 
-Folgende Bauteile wurden in der Praxis bis 3 kW getestet:
+The following components have been tested in practice up to 3 kW:
 
-Bauteil | Typ
-T1-T4   | SPP80P06PH, Infineon, P-Channel, -60V, -80A, 0,023R
-T5      | 2N5551, NPN-Transistor, 160V, 0,6A, 0,63W
-D1      | Generische Zener-Diode, 15V, 0,5W
-D2      | P6KE56CA, TVS Suppressordiode , 56V, 600W
-R[x]    | Widerstand 1/4 Watt
-C2      | 220nF, 1ß0V, Polyester (20V reicht auch)
+| Component | Type |
+| --------- | ---- |
+| T1-T4 | SPP80P06PH, Infineon, P-Channel, -60V, -80A, 0.023R |
+| T5 | 2N5551, NPN transistor, 160V, 0.6A, 0.63W |
+| D1 | Generic Zener Diode, 15V, 0.5W |
+| D2 | P6KE56CA, TVS suppressor diode, 56V, 600W |
+| R[x] | Resistance 1/4 watts |
+| C2 | 220nF, 1ß0V, polyester (20V is also sufficient) |
 
-Die restliche Beschaltung ist nur zur Simulation.
+The rest of the wiring is only for simulation.
 
 # Simulation
 
-1. Bei 1s wird die Versorgungsspannung 54,6V (=Li-Ion 13S) eingeschaltet. Nur ein fast unsichtbarer Spike zu sehen durch Kapazitäten im Picofarad-Bereich.
-2. Bei 2s wird die Steuerleitung auf High gelegt. Der Last-Kondensator von 100uF wird geladen. Das verzögerte Ansteigen der Spannung an den Mosfets zieht den Einschaltvorgang einige Millisekunden in die Länge. Dadurch bleibt der Strom unter 50A. Wem das immer noch zu viel ist, kann für C2 auch 1uF nehmen.
-3. Bei 3s wird eine Sinusförmige Last zugeschaltet, die abwechselnd bis ca. 1,5kW Leistung zieht und dann wieder leicht rekupperiert.
-4. Bei 7s wird die Last abgeschaltet.
-5. Bei 8s wird die Steuerleitung hochohmig. Nachdem C2 über 200K entladen wurde, schalten die Mosfets ab.
-6. Bei 9s wird die Versorgungsspannung ausgeschaltet.
+1. At 1s the supply voltage 54.6V (=Li-Ion 13S) is switched on. Only an almost invisible spike can be seen through capacitances in the picofarad range.
+2. At 2s the control line is set to high. The load capacitor of 100uF is loaded. The delayed increase in voltage at the Mosfets extends the switch-on process by a few milliseconds. This keeps the current below 50A. If that is still too much for you, you can also use 1uF for C2.
+3. At 3s, a sinusoidal load is switched on, which alternately draws up to approx. 1.5kW of power and then recuperates slightly.
+4. At 7s, the load is cut off.
+5. At 8s the control line becomes highly resistive. After C2 is discharged above 200K, the mosfets turn off.
+6. At 9s the supply voltage is switched off.
 
-# Bewertung
+# Evaluation
 
-Alle Parameter bleiben innerhalb der Spezifikation. Die maximale Leistung an allen 4 Mosfets zusammen beträgt ca. 20 Watt wenn am Verbraucher Leistungsspitzen von 1,5kW angefragt werden. Dazu wurden die 4 Mosfets zusätzlich auf einen kleinen Kühlkörper montiert (siehe Foto).
+All parameters remain within specification. The maximum power at all 4 Mosfets together is approx. 20 watts if power peaks of 1.5kW are requested at the consumer. For this purpose, the 4 Mosfets were additionally mounted on a small heat sink (see photo).
 
-# Ausblick
+# Outlook
 
-Man könnte auch 6 Mosfets des Typs SPP80P06PH verwenden. Bei neuen Projekten mit noch höherer Leistungsaufnahme wird möglicherweise ein High Side Switch mit N-Channel Mosfets realisiert werden. Leider sind entsprechende Bauteile hierzulande inzwischen schwierig zu bekommen.
+You could also use 6 mosfets of type SPP80P06PH. For new projects with even higher power consumption, a high-side switch with N-channel mosfets may be implemented. Unfortunately, corresponding components are now difficult to obtain in some places.
