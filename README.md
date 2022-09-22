@@ -20,6 +20,7 @@ If the low side is switched, the electronics are still dependent on the operatin
 * Pass through ground
 * Simple, available components
 * Minimal to no power consumption in off state
+* Fully operable starting at 12 Volts
 
 # Notes on the Circuit Diagram
 
