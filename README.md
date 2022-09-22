@@ -33,7 +33,7 @@ The following components have been tested in practice up to 3 kW:
 | T5 | 2N5551, NPN transistor, 160V, 0.6A, 0.63W |
 | D1 | Generic Zener Diode, 15V, 0.5W |
 | D2 | P6KE56CA, TVS suppressor diode, 56V, 600W |
-| R[x] | Resistance 1/4 watts |
+| R[x] | Resistor 1/4 watts |
 | C2 | 220nF, 1ß0V, polyester (20V is also sufficient) |
 
 The rest of the wiring is only for simulation.
