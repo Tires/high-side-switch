@@ -10,6 +10,16 @@ The power supply of a motor controller should be switched on the high side (Vss)
 
 If the low side is switched, the electronics are still dependent on the operating voltage. Current continues to flow through components connected to ground. This leads to unpleasant side effects, permanent power consumption, etc.
 
+# Features
+
+* Current up to more then 100 Amperes (need cooling)
+* Clipping battery connecting spikes
+* Clipping switching on/off spikes
+* Support recuperation (with diode of Mosfet)
+* Single control input wire
+* Pass through ground
+* Simple, available components
+
 # Notes on the Circuit Diagram
 
 In LTSpice I didn't have the exact components used, so I used similar components.
