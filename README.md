@@ -19,6 +19,7 @@ If the low side is switched, the electronics are still dependent on the operatin
 * Single control input wire
 * Pass through ground
 * Simple, available components
+* Minimal to no power consumption in off state
 
 # Notes on the Circuit Diagram
 
